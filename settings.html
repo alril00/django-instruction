@@ -145,7 +145,11 @@ CORS_ALLOWED_ORIGINS = [
                 <li>без<i class="code-gray">DJOSER</i> вход не сработает, потребуется re_password</li>
             </ul>
 
-
+            <p>Подключите заранее стили:</p>
+            <pre><code>import os
+TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'templates')]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</code></pre>
 
         </div>
     </main>
