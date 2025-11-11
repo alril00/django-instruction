@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django проект для регистрации пользователя</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" />
+    <link rel="icon" href="icons8-треугольник-48.ico" type="image/x-icon" />
+
+</head>
+
+<body>
+
+    <header>
+        <div class="container header-container">
+            <h1>Django </h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Python</a></li>
+                    <li><a href="index.html">Django</a></li>
+                    <li><a href="settings.html">Framework</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <h1>Framework</h1>
+
+            <h2>MIDDLEWARE</h2>
+            <pre><code class="language-python">'corsheaders.middleware.CorsMiddleware'</code></pre>
+            <h4>Зачем:</h4>
+            <ul>
+                <li>CORS (Cross-Origin Resource Sharing) — механизм безопасности браузера.</li>
+                <li>Браузер запрещает фронтенду (например, http://localhost:5500, Live Server) делать запросы на бэкенд
+                    (http://127.0.0.1:8000), если домены/порты отличаются → это разные origin.</li>
+
+            </ul>
+            <p>При попытке регистрации через <i class="code-gray">fetch()</i> в <i class="code-gray">register.js</i>:
+            </p>
+            <pre><code class="language-python">Access to fetch at 'http://127.0.0.1:8000/api/auth/users/' 
+from origin 'http://127.0.0.1:5500' has been blocked by CORS policy</code></pre>
+            <p> <b>Регистрация и вход не сработают в браузере</b>, хотя через Postman/curl — да. </p>
+
+            <h2>CORS_ALLOW_ALL_ORIGINS</h2>
+            <pre><code class="language-python">True</code></pre>
+            <h4>Зачем:</h4>
+            <ul>
+                <li>Говорит Django: «Разрешить запросы с ЛЮБОГО origin» (например, localhost:3000, localhost:5500,
+                    my-frontend.com).</li>
+                <li>Без этого нужно явно перечислять разрешённые домены в <i>CORS_ALLOWED_ORIGINS</i>.</li>
+
+            </ul>
+            <h4>Почему True:</h4>
+            <ul>
+                <li>Удобно на этапе разработки — не надо думать про настройку origin.</li>
+                <li>Опасно в продакшене → злоумышленник может сделать фишинговый сайт, который будет слать запросы к
+                    твоему API от лица пользователя (если есть XSS).</li>
+            </ul>
+            <p>Альтернатива (безопаснее)</p>
+            <pre><code class="language-python"># Только если запускаешь через Live Server (порт 5500) или runserver (порт 8000)
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]</code></pre>
+
+            <h2>UTH_USER_MODEL</h2>
+            <pre> <code class="language-python">'accounts.User'</code></pre>
+            <h4>Зачем:</h4>
+            <ul>
+                <li>Django по умолчанию использует auth.User (с username, email как опциональное).</li>
+                <li>Эта настройка говорит Django: <b>«Забудь старого User — используй мою модель»</b>.</li>
+
+            </ul>
+            <h4>Почему True:</h4>
+            <ul>
+                <li>Удобно на этапе разработки — не надо думать про настройку origin.</li>
+                <li>Опасно в продакшене → злоумышленник может сделать фишинговый сайт, который будет слать запросы к
+                    твоему API от лица пользователя (если есть XSS).</li>
+            </ul>
+
+            <pre><code class="language-python">from datetime import timedelta</code></pre>
+
+
+            <h2>SIMPLE_JWT</h2>
+            <!-- <pre><code class="language-python">'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),
+'AUTH_HEADER_TYPES': ('Bearer',),</code></pre> -->
+            <h4>Зачем:</h4>
+            <ul>
+                <li>Djoser использует <b>JWT (JSON Web Token) </b> для аутентификации.</li>
+                <li><i>simplejwt </i> — библиотека, которая генерирует/проверяет токены.</li>
+
+            </ul>
+            <h4>Поднастройки:</h4>
+            <ul>
+                <li> <i class="code-gray">'ACCESS_TOKEN_LIFETIME': timedelta(hours=1) </i>→ Токен живёт 1 час. Без
+                    этого — по умолчанию 5 минут (слишком мало для тестов). </li>
+                <li><i class="code-gray">'AUTH_HEADER_TYPES': ('Bearer',)</i>→ Говорит: «В заголовке Authorization
+                    ожидай Bearer».</li>
+            </ul>
+
+            <h4>REST_FRAMEWORK</h4>
+            <pre><code class="language-python"> = {
+'DEFAULT_AUTHENTICATION_CLASSES': (
+    'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),} </code></pre>
+            <h4>Зачем:</h4>
+            <ul>
+                <li>Говорит DRF: <b>«Как аутентифицировать пользователей по умолчанию?»</b></li>
+                <li>→ Все эндпоинты (/api/auth/users/me/, например) будут проверять заголовок Authorization: Bearer ...
+                </li>
+                <li>без этого: <i class="code-gray">/api/auth/users/me/</i> в profile.js вернёт 401 Unauthorized, потому
+                    что DRF не знает, как читать JWT.
+                    → Профиль не загрузится.</li>
+            </ul>
+
+            <h2>DJOSER</h2>
+            <h4>Поднастройки:</h4>
+            <ul>
+                <li><i class="code-gray">'LOGIN_FIELD': 'email',</i>→ Вместо username (по умолчанию) Djoser будет искать
+                    пользователя по email.
+                    Без этого: при входе через fetch('/jwt/create/', { email, password }) будет ошибка:
+                    {"non_field_errors":["Invalid credentials"]} — потому что Djoser ищет username=email.</li>
+                <li><i class="code-gray">'USER_CREATE_PASSWORD_RETYPE': True</i>→ Требует поле re_password при
+                    регистрации (и проверяет, что password == re_password).
+                    Без этого: можно убрать re_password из register.js → но ты его отправляешь, так что без этой
+                    настройки будет ошибка: {"re_password":["This field is required."]}</li>
+                <li><i class="code-gray">'SEND_ACTIVATION_EMAIL': False</i>→ Отключает email-подтверждение после
+                    регистрации.
+                    Без этого (по умолчанию True) — Djoser ждёт is_active=True, а новый юзер создаётся is_active=False →
+                    нельзя войти.
+                    Ты не настроил SMTP → вход был бы невозможен.</li>
+                <li><i class="code-gray">'HIDE_USERS': False</i>→ Позволяет неавторизованным видеть список юзеров
+                    (/api/auth/users/).
+                    По умолчанию True — скрывает.
+                    Не критично для регистрации, но полезно для отладки.</li>
+                <li>без<i class="code-gray">DJOSER</i> вход не сработает, потребуется re_password</li>
+            </ul>
+
+
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <p>&copy; 2024 Metanit.com</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <!-- Скрипт Prism -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+
+</body>
