@@ -13,138 +13,138 @@
 
 <body>
 
-    <body>
 
-        <header>
-            <div class="container header-container">
-                <h1>Django </h1>
-                <nav>
-                    <ul>
-                        <li><a href="#">Главная</a></li>
-                        <li><a href="#">Python</a></li>
-                        <li><a href="#">Django</a></li>
-                        <li><a href="#">Новости</a></li>
-                        <li><a href="#">Контакты</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
 
-        <main>
-            <div class="container">
-
-                <h1>Создаем систему авторизации на Django: пошаговая инструкция</h1>
-
-                <h2>Почему именно Django?</h2>
-                <p>Django — это мощный и гибкий фреймворк для разработки веб-приложений на Python. Он помогает быстро
-                    создавать безопасные и масштабируемые сайты. В нашем случае, благодаря встроенному админ-панели,
-                    готовым компонентам аутентификации и многочисленным расширениям, мы сможем реализовать функционал
-                    регистрации и входа без лишних усилий.</p>
-
-                <h2>Что мы собираемся сделать</h2>
-                <p>Перед началом работы важно понять конечную цель: при открытии сайта пользователь сразу попадает на
-                    страницу входа. Не зарегистрирован — переходит на страницу регистрации, вводит свои данные, и они
-                    сохраняются в базе данных. После успешного входа — попадает в свой профиль, где видит свои личные
-                    данные и может выйти из системы. Всё это — безопасно, удобно и быстро.</p>
-
-                <h2>Цель проекта</h2>
-                <p>При открытии http://127.0.0.1:8000 автоматически загружается страница входа. Если пользователь не
-                    зарегистрирован — он может перейти на страницу регистрации, ввести данные, которые сохранятся в
-                    базе. После входа откроется личный профиль, где можно увидеть свои данные и выйти.</p>
-
-                <h2> Подготовка окружения</h2>
-                <table>
-                    <tr>
-                        <td>Программа</td>
-                        <td>Скачать</td>
-                        <td>Проверка в терминале</td>
-                    </tr>
-                    <tr>
-                        <td>Python 3.10+</td>
-                        <td>python.org/downloads</td>
-                        <td>python --version → Python 3.10.x или выше</td>
-                    </tr>
-                    <tr>
-                        <td>VS Code</td>
-                        <td>code.visualstudio.com</td>
-                        <td>—</td>
-                    </tr>
-                </table>
-
-                <p>Важно: при установке Python обязательно поставьте галочку Add Python to PATH.</p>
-
-                <h2> Установка расширений в VS Code</h2>
-                <ol>
-                    <li>Откройте VS Code.</li>
-                    <li>Перейдите в раздел расширений (4 квадрата слева).</li>
-                    <li>Введите и установите:
-                        <ul>
-                            <li>Python (от Microsoft)</li>
-                            <li>Django (от Baptiste Darthenay)</li>
-                            <li>Live Server (от Ritwick Dey)</li>
-                            <li>Prettier (для автоформатирования)</li>
-                        </ul>
-
-                    </li>
-                </ol>
-
-                <h2> Создание проекта</h2>
-                <ol>
-                    <li>Создайте папку, например:
-                        <p class="code-gray">C:\auth-app (Windows) или /Users/ваше-имя/projects/auth-app (macOS).</p>
-                    </li>
-                    <li>Откройте эту папку в VS Code: <p class="code-gray"> File → Open Folder</p>
-                    </li>
-                    <li>Встроенный терминал (`Ctrl +```) откройте команду.</li>
-                </ol>
-
-                <h2>Настройка Python и Django</h2>
-                <h4>Шаг 1: Создайте виртуальное окружение</h4>
-                <pre><code class="language-python">python -m venv .venv</code></pre>
-
-                <p>Активируйте его:</p>
+    <header>
+        <div class="container header-container">
+            <h1>Django </h1>
+            <nav>
                 <ul>
-                    <li>Windows:
-                        <p class="code-gray">C:\django\.venv\Scripts\activate</p>
-                    </li>
-                    <li>macOS/Linux:
-                        <p class="code-gray">source venv/bin/activate</p>
-                    </li>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Python</a></li>
+                    <li><a href="#">Django</a></li>
+                    <li><a href="settings.html">Framework</a></li>
+                    <li><a href="#">Контакты</a></li>
                 </ul>
-                <p>Появится (venv) в терминале.</p>
+            </nav>
+        </div>
+    </header>
 
-                <h4>Шаг 2: Установите pip </h4>
-                <pre><code class="language-python">python -m ensurepip --upgrade</code></pre>
+    <main>
+        <div class="container">
+
+            <h1>Создаем систему авторизации на Django: пошаговая инструкция</h1>
+
+            <h2>Почему именно Django?</h2>
+            <p>Django — это мощный и гибкий фреймворк для разработки веб-приложений на Python. Он помогает быстро
+                создавать безопасные и масштабируемые сайты. В нашем случае, благодаря встроенному админ-панели,
+                готовым компонентам аутентификации и многочисленным расширениям, мы сможем реализовать функционал
+                регистрации и входа без лишних усилий.</p>
+
+            <h2>Что мы собираемся сделать</h2>
+            <p>Перед началом работы важно понять конечную цель: при открытии сайта пользователь сразу попадает на
+                страницу входа. Не зарегистрирован — переходит на страницу регистрации, вводит свои данные, и они
+                сохраняются в базе данных. После успешного входа — попадает в свой профиль, где видит свои личные
+                данные и может выйти из системы. Всё это — безопасно, удобно и быстро.</p>
+
+            <h2>Цель проекта</h2>
+            <p>При открытии http://127.0.0.1:8000 автоматически загружается страница входа. Если пользователь не
+                зарегистрирован — он может перейти на страницу регистрации, ввести данные, которые сохранятся в
+                базе. После входа откроется личный профиль, где можно увидеть свои данные и выйти.</p>
+
+            <h2> Подготовка окружения</h2>
+            <table>
+                <tr>
+                    <td>Программа</td>
+                    <td>Скачать</td>
+                    <td>Проверка в терминале</td>
+                </tr>
+                <tr>
+                    <td>Python 3.10+</td>
+                    <td>python.org/downloads</td>
+                    <td>python --version → Python 3.10.x или выше</td>
+                </tr>
+                <tr>
+                    <td>VS Code</td>
+                    <td>code.visualstudio.com</td>
+                    <td>—</td>
+                </tr>
+            </table>
+
+            <p>Важно: при установке Python обязательно поставьте галочку Add Python to PATH.</p>
+
+            <h2> Установка расширений в VS Code</h2>
+            <ol>
+                <li>Откройте VS Code.</li>
+                <li>Перейдите в раздел расширений (4 квадрата слева).</li>
+                <li>Введите и установите:
+                    <ul>
+                        <li>Python (от Microsoft)</li>
+                        <li>Django (от Baptiste Darthenay)</li>
+                        <li>Live Server (от Ritwick Dey)</li>
+                        <li>Prettier (для автоформатирования)</li>
+                    </ul>
+
+                </li>
+            </ol>
+
+            <h2> Создание проекта</h2>
+            <ol>
+                <li>Создайте папку, например:
+                    <p class="code-gray">C:\auth-app (Windows) или /Users/ваше-имя/projects/auth-app (macOS).</p>
+                </li>
+                <li>Откройте эту папку в VS Code: <p class="code-gray"> File → Open Folder</p>
+                </li>
+                <li>Встроенный терминал (`Ctrl +```) откройте команду.</li>
+            </ol>
+
+            <h2>Настройка Python и Django</h2>
+            <h4>Шаг 1: Создайте виртуальное окружение</h4>
+            <pre><code class="language-python">python -m venv .venv</code></pre>
+
+            <p>Активируйте его:</p>
+            <ul>
+                <li>Windows:
+                    <p class="code-gray">C:\django\.venv\Scripts\activate</p>
+                </li>
+                <li>macOS/Linux:
+                    <p class="code-gray">source venv/bin/activate</p>
+                </li>
+            </ul>
+            <p>Появится (venv) в терминале.</p>
+
+            <h4>Шаг 2: Установите pip </h4>
+            <pre><code class="language-python">python -m ensurepip --upgrade</code></pre>
 
 
-                <h4>Шаг 3: Установите Django и зависимости</h4>
-                <pre><code class="language-python">python -m pip install Django
+            <h4>Шаг 3: Установите Django и зависимости</h4>
+            <pre><code class="language-python">python -m pip install Django
 pip install django djangorestframework djoser django-cors-headers
 django-admin startproject myproject
 python manage.py startapp accounts</code></pre>
 
-                <p>Структура проекта сейчас:</p>
-                <pre><code>auth-app/
+            <p>Структура проекта сейчас:</p>
+            <pre><code>auth-app/
 ├── core/
 ├── accounts/
 ├── manage.py
 └── venv/</code></pre>
 
-                <h2>Конфигурация Django</h2>
-                <h4>Настройка <i>myproject/settings.py</i></h4>
-                <ul>
-                    <li>В <i>INSTALLED_APPS</i> добавьте:
-                        <pre><code class="language-python">'corsheaders',
+            <h2>Конфигурация Django</h2>
+            <h4>Настройка <i>myproject/settings.py</i></h4>
+            <ul>
+                <li>В <i>INSTALLED_APPS</i> добавьте:
+                    <pre><code class="language-python">'corsheaders',
 'rest_framework',
 'djoser',
 'accounts',</code></pre>
-                    </li>
-                    <li>
-                        В <i>MIDDLEWARE</i> в самом начале вставьте:
-                        <pre><code class="language-python">'corsheaders.middleware.CorsMiddleware',</code></pre>
-                    </li>
-                    <li>В конце файла добавьте:
-                        <pre><code class="language-python">CORS_ALLOW_ALL_ORIGINS = True
+                </li>
+                <li>
+                    В <i>MIDDLEWARE</i> в самом начале вставьте:
+                    <pre><code class="language-python">'corsheaders.middleware.CorsMiddleware',</code></pre>
+                </li>
+                <li>В конце файла добавьте:
+                    <pre><code class="language-python">CORS_ALLOW_ALL_ORIGINS = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
@@ -170,15 +170,15 @@ DJOSER = {
         'current_user': 'accounts.serializers.UserSerializer',
     },
 }</code></pre>
-                    </li>
-                </ul>
+                </li>
+            </ul>
 
-                <h2>Создание кастомного пользователя</h2>
-                <p>Стандартная модель пользователя Django — это хорошо, но для наших целей лучше создать свою
-                    собственную. Мы делаем это, чтобы использовать только email для входа и иметь возможность расширять
-                    профиль по необходимости. Здесь важна правильная настройка менеджера и модели.</p>
-                <h4>В <i>accounts/models.py</i> создаем пользователя:</h4>
-                <pre><code class="language-python">from django.contrib.auth.models import AbstractUser, BaseUserManager
+            <h2>Создание кастомного пользователя</h2>
+            <p>Стандартная модель пользователя Django — это хорошо, но для наших целей лучше создать свою
+                собственную. Мы делаем это, чтобы использовать только email для входа и иметь возможность расширять
+                профиль по необходимости. Здесь важна правильная настройка менеджера и модели.</p>
+            <h4>В <i>accounts/models.py</i> создаем пользователя:</h4>
+            <pre><code class="language-python">from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 
 class UserManager(BaseUserManager):
@@ -209,10 +209,10 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email</code></pre>
-                <p>Сохраняем.</p>
+            <p>Сохраняем.</p>
 
-                <h4>В <i>accounts/admin.py</i> регистрируем модель:</h4>
-                <pre><code class="language-python">from django.contrib import admin
+            <h4>В <i>accounts/admin.py</i> регистрируем модель:</h4>
+            <pre><code class="language-python">from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from .models import User
 
@@ -233,8 +233,8 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email',)
     ordering = ('email',)</code></pre>
 
-                <h4>В <i>accounts/serializers.py</i> обрабатываем:</h4>
-                <pre><code class="language-python">from djoser.serializers import UserSerializer as BaseUserSerializer
+            <h4>В <i>accounts/serializers.py</i> обрабатываем:</h4>
+            <pre><code class="language-python">from djoser.serializers import UserSerializer as BaseUserSerializer
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -245,11 +245,11 @@ class UserSerializer(BaseUserSerializer):
         fields = ('id', 'email', 'first_name', 'last_name', 'date_joined')  # ← добавили date_joined
         read_only_fields = ('date_joined',)</code></pre>
 
-                <h2> Маршруты и views</h2>
-                <p>Для отображения страниц входа, регистрации и профиля создаем маршруты и соответствующие view-функции.
-                    Они будут рендерить HTML-шаблоны, в которых реализуем формы и вывод информации.</p>
-                <h4>В <i>myproject/urls.py </i> — подключаем маршруты:</h4>
-                <pre><code class="language-python">from django.contrib import admin
+            <h2> Маршруты и views</h2>
+            <p>Для отображения страниц входа, регистрации и профиля создаем маршруты и соответствующие view-функции.
+                Они будут рендерить HTML-шаблоны, в которых реализуем формы и вывод информации.</p>
+            <h4>В <i>myproject/urls.py </i> — подключаем маршруты:</h4>
+            <pre><code class="language-python">from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
 
@@ -261,8 +261,8 @@ urlpatterns = [
     path('', include('accounts.urls')),
 ]</code></pre>
 
-                <h4>Создаем <i>accounts/urls.py</i> :</h4>
-                <pre><code class="language-python">from django.urls import path
+            <h4>Создаем <i>accounts/urls.py</i> :</h4>
+            <pre><code class="language-python">from django.urls import path
 from . import views
 
 urlpatterns = [
@@ -271,8 +271,8 @@ urlpatterns = [
     path('profile/', views.profile_view, name='profile'),     # → /profile/
 ]</code></pre>
 
-                <h4> В <i>accounts/views.py</i> — добавляем:</h4>
-                <pre><code class="language-python">from django.shortcuts import render
+            <h4> В <i>accounts/views.py</i> — добавляем:</h4>
+            <pre><code class="language-python">from django.shortcuts import render
 
 def login_view(request):
     return render(request, 'login.html')
@@ -282,22 +282,22 @@ def register_view(request):
 
 def profile_view(request):
     return render(request, 'profile.html')</code></pre>
-                <h2>Шаблоны и статика</h2>
-                <h4>Создайте папки:</h4>
-                <pre><code>templates/
+            <h2>Шаблоны и статика</h2>
+            <h4>Создайте папки:</h4>
+            <pre><code>templates/
 static/css/
 static/js/</code></pre>
-                <p>и подключите их в <i>myproject/settings.py</i>:</p>
-                <pre><code class="language-python">import os
+            <p>и подключите их в <i>myproject/settings.py</i>:</p>
+            <pre><code class="language-python">import os
 
 TEMPLATES[0]['DIRS'] = [os.path.join(BASE_DIR, 'templates')]
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</code></pre>
 
-                <h4>Создайте базовый шаблон <i>templates/base.html</i>:</h4>
+            <h4>Создайте базовый шаблон <i>templates/base.html</i>:</h4>
 
-                <pre><code class="language-html">&#x3C;!DOCTYPE html&#x3E;
+            <pre><code class="language-html">&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html&#x3E;
 &#x3C;head&#x3E;
     &#x3C;meta charset=&#x22;utf-8&#x22;&#x3E;
@@ -315,13 +315,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</code></pre>
 &#x3C;/body&#x3E;
 &#x3C;/html&#x3E;</code></pre>
 
-                <h4>Страницы — вход, регистрация, профиль</h4>
+            <h4>Страницы — вход, регистрация, профиль</h4>
 
 
-                <details>
-                    <summary>login.html</summary>
-                    <p>
-                    <pre><code class="language-html">{% extends &#x27;base.html&#x27; %}
+            <details>
+                <summary>login.html</summary>
+                <p>
+                <pre><code class="language-html">{% extends &#x27;base.html&#x27; %}
 
 {% block content %}
 &#x3C;h2&#x3E;&#x412;&#x445;&#x43E;&#x434;&#x3C;/h2&#x3E;
@@ -337,13 +337,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</code></pre>
 {% block extra_js %}
 &#x3C;script src=&#x22;/static/js/login.js&#x22;&#x3E;&#x3C;/script&#x3E;
 {% endblock %}</code></pre>
-                    </p>
-                </details>
+                </p>
+            </details>
 
-                <details>
-                    <summary>register.html</summary>
-                    <p>
-                    <pre><code class="language-html">{% extends &#x27;base.html&#x27; %}
+            <details>
+                <summary>register.html</summary>
+                <p>
+                <pre><code class="language-html">{% extends &#x27;base.html&#x27; %}
 
 {% block content %}
 &#x3C;h2&#x3E;&#x420;&#x435;&#x433;&#x438;&#x441;&#x442;&#x440;&#x430;&#x446;&#x438;&#x44F;&#x3C;/h2&#x3E;
@@ -362,13 +362,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</code></pre>
 {% block extra_js %}
 &#x3C;script src=&#x22;/static/js/register.js&#x22;&#x3E;&#x3C;/script&#x3E;
 {% endblock %}</code></pre>
-                    </p>
-                </details>
+                </p>
+            </details>
 
-                <details>
-                    <summary>profile.html</summary>
-                    <p>
-                    <pre><code class="language-html">{% extends &#x27;base.html&#x27; %}
+            <details>
+                <summary>profile.html</summary>
+                <p>
+                <pre><code class="language-html">{% extends &#x27;base.html&#x27; %}
 
 {% block content %}
 &#x3C;h2&#x3E;&#x412;&#x430;&#x448; &#x43F;&#x440;&#x43E;&#x444;&#x438;&#x43B;&#x44C;&#x3C;/h2&#x3E;
@@ -386,15 +386,15 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]</code></pre>
 {% block extra_js %}
 &#x3C;script src=&#x22;/static/js/profile.js&#x22;&#x3E;&#x3C;/script&#x3E;
 {% endblock %}</code></pre>
-                    </p>
-                </details>
+                </p>
+            </details>
 
 
-                <h2>Стиль и скрипты</h2>
-                <p>Создайте стили <i>static/css/style.css</i> и JS-скрипты <i>static/js/</i> для формы, авторизации,
-                    профиля. Весь код — по шаблону</p>
+            <h2>Стиль и скрипты</h2>
+            <p>Создайте стили <i>static/css/style.css</i> и JS-скрипты <i>static/js/</i> для формы, авторизации,
+                профиля. Весь код — по шаблону</p>
 
-                <pre><code class="language-css">body { font-family: Arial; background: #f0f2f5; }
+            <pre><code class="language-css">body { font-family: Arial; background: #f0f2f5; }
 .container { max-width: 400px; margin: 50px auto; }
 .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px #0002; }
 input { width: 100%; padding: 10px; margin: 8px 0; border: 1px solid #ddd; border-radius: 4px; }
@@ -405,10 +405,10 @@ a { color: #1890ff; text-decoration: none; }</code></pre>
 
 
 
-                <details>
-                    <summary>auth.js</summary>
-                    <p>
-                    <pre><code class="language-javascript">function saveToken(token) {
+            <details>
+                <summary>auth.js</summary>
+                <p>
+                <pre><code class="language-javascript">function saveToken(token) {
     localStorage.setItem('token', token);
 }
 
@@ -432,13 +432,13 @@ function requireAuth() {
         window.location = '/login/';
     }
 }</code></pre>
-                    </p>
-                </details>
+                </p>
+            </details>
 
-                <details>
-                    <summary>login.js</summary>
-                    <p>
-                    <pre><code class="language-javascript">document.getElementById('login-form').onsubmit = async (e) => {
+            <details>
+                <summary>login.js</summary>
+                <p>
+                <pre><code class="language-javascript">document.getElementById('login-form').onsubmit = async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
@@ -462,13 +462,13 @@ function requireAuth() {
         btn.disabled = false;
     }
 };</code></pre>
-                    </p>
-                </details>
+                </p>
+            </details>
 
-                <details>
-                    <summary>register.js</summary>
-                    <p>
-                    <pre><code class="language-javascript">document.getElementById('reg-form').onsubmit = async (e) => {
+            <details>
+                <summary>register.js</summary>
+                <p>
+                <pre><code class="language-javascript">document.getElementById('reg-form').onsubmit = async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const fname = document.getElementById('fname').value;
@@ -505,13 +505,13 @@ function requireAuth() {
                        'Ошибка регистрации';
     }
 };</code></pre>
-                    </p>
-                </details>
+                </p>
+            </details>
 
-                <details>
-                    <summary>register.js</summary>
-                    <p>
-                    <pre><code class="language-javascript">requireAuth();
+            <details>
+                <summary>register.js</summary>
+                <p>
+                <pre><code class="language-javascript">requireAuth();
 
 const token = getToken();
 fetch('/api/auth/users/me/', {
@@ -535,65 +535,65 @@ fetch('/api/auth/users/me/', {
     document.getElementById('err').style.display = 'block';
     setTimeout(() => window.location = '/login/', 2000);
 });</code></pre>
-                    </p>
-                </details>
-
-
-                <h2>Запуск проекта</h2>
-                <h4>Создайте миграции:</h4>
-                <p>
-                <pre><code class="language-python">python manage.py makemigrations
-python manage.py migrate</code></pre>
                 </p>
-                <h4>Запустите сервер:</h4>
-                <pre><code class="language-python">python manage.py runserver
+            </details>
+
+
+            <h2>Запуск проекта</h2>
+            <h4>Создайте миграции:</h4>
+            <p>
+            <pre><code class="language-python">python manage.py makemigrations
+python manage.py migrate</code></pre>
+            </p>
+            <h4>Запустите сервер:</h4>
+            <pre><code class="language-python">python manage.py runserver
 </code></pre>
-                <h2>Итоги</h2>
-                <ul>
-                    <li>Вы создали полноценную систему входа и регистрации.</li>
-                    <li>Данные хранятся в SQLite.</li>
-                    <li>Защита профиля — JWT-токены.</li>
-                    <li>Всё работает из коробки, без сложных бэкенд-разработок!</li>
+            <h2>Итоги</h2>
+            <ul>
+                <li>Вы создали полноценную систему входа и регистрации.</li>
+                <li>Данные хранятся в SQLite.</li>
+                <li>Защита профиля — JWT-токены.</li>
+                <li>Всё работает из коробки, без сложных бэкенд-разработок!</li>
 
-                </ul>
+            </ul>
 
-                <h2>Возможные ошибки</h2>
+            <h2>Возможные ошибки</h2>
 
-                <table>
-                    <tr>
-                        <td>Проблема</td>
-                        <td>Ошибка импорта</td>
-                        <td>Страницы не грузятся</td>
-                        <td>Не работает JWT</td>
-                    </tr>
-                    <tr>
-                        <td>Решение</td>
-                        <td>Проверь, активен ли виртуальный env ((venv)) и установлены ли зависимости.</td>
-                        <td>Проверь правильность путей к шаблонам и статике.</td>
-                        <td>Проверь, что AUTH_USER_MODEL правильно прописан, и что токен сохраняется.</td>
-                    </tr>
+            <table>
+                <tr>
+                    <td>Проблема</td>
+                    <td>Ошибка импорта</td>
+                    <td>Страницы не грузятся</td>
+                    <td>Не работает JWT</td>
+                </tr>
+                <tr>
+                    <td>Решение</td>
+                    <td>Проверь, активен ли виртуальный env ((venv)) и установлены ли зависимости.</td>
+                    <td>Проверь правильность путей к шаблонам и статике.</td>
+                    <td>Проверь, что AUTH_USER_MODEL правильно прописан, и что токен сохраняется.</td>
+                </tr>
 
-                </table>
+            </table>
 
-                <h2>Готово!</h2>
-                <p>Теперь у вас есть рабочая система авторизации на Django — легко расширяема и безопасна. Удачи в
-                    разработке!</p>
+            <h2>Готово!</h2>
+            <p>Теперь у вас есть рабочая система авторизации на Django — легко расширяема и безопасна. Удачи в
+                разработке!</p>
 
-                <footer>
-                    <div class="container footer-container">
-                        <p>&copy; 2024 Metanit.com</p>
-                    </div>
-                </footer>
+            <footer>
+                <div class="container footer-container">
+                    <p>&copy; 2024 Metanit.com</p>
+                </div>
+            </footer>
 
-                <script src="script.js"></script>
-                <!-- Скрипт Prism -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-                <script
-                    src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+            <script src="script.js"></script>
+            <!-- Скрипт Prism -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
 
-                <!-- <script>hljs.highlightAll();</script> -->
-    </body>
+            <!-- <script>hljs.highlightAll();</script> -->
+
 
 </html>
 </body>
