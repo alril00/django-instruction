@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #aeaeae; */
+    color: #1f1f1f;
+    line-height: 1.6;
+}
+
+pre.language-python,
+pre.language-html,
+pre.language-javascript {
+    font-size: 14px !important;
+    text-decoration: none !important;
+}
+
+
+
+:root {
+    --code-gray: #646464;
+}
+
+/* h2,
+h3 {
+    margin-top: 20px;
+} */
+h2 {
+    margin-top: 50px;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* border: 2px solid red; */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* шапка сайта */
+header {
+    background-color: #2c3e50;
+    padding: 20px 0;
+    color: #fff;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* основной контент */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+/* подвал сайта */
+footer {
+    background-color: #2c3e50;
+    padding: 20px 0;
+    color: #ecf0f1;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* ////// */
+
+
+table {
+    width: 650px;
+    /* border-top: 7px solid rgb(43, 129, 17); */
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+}
+
+td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid rgb(119, 131, 116);
+}
+
+th {
+    text-align: center;
+    padding: 10px;
+    /* border: 3px solid rgb(43, 129, 17); */
+}
+
+.code-gray {
+    color: var(--code-gray);
+    margin: 5px;
+}
+
+/* Общий стиль для всех элементов details */
+details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+/* При наведении — легкое поднятие тени */
+details:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-color: #aaa;
+}
+
+/* Стиль для summary (заголовка) */
+details summary {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    /* убрать стрелку по умолчанию в некоторых браузерах */
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Добавим стрелку, которая меняет направление */
+details summary::-webkit-details-marker {
+    display: none;
+    /* скрываем стандартный маркер */
+}
+
+/* Создаем свою стрелку с помощью псевдоэлемента */
+details summary::after {
+    content: '▼';
+    font-size: 0.8em;
+    margin-left: auto;
+    transition: transform 0.3s;
+}
+
+/* Поворот стрелки при открытии */
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+
+/* Стиль для содержимого */
+details p {
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 1em;
+    color: #333;
+    line-height: 1.4;
+}
+
+/* Общие стили для таблицы */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Заголовки таблицы */
+th {
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* Ячейки таблицы */
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+    color: #333;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+/* Зебра-стили для строк */
+tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
